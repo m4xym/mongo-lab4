@@ -1,0 +1,242 @@
+1. Порахувати всі ігри у сховищі
+> db.games.count()
+7
+
+-----------------------------------------------------------------------
+
+2. Вивести всі ігри визначеного жанру
+> db.games.find({genre:"Shooter"}).pretty()
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4e"),
+        "title" : "Portal",
+        "genre" : [
+                "Shooter",
+                "Arcade",
+                "Sci-Fi"
+        ],
+        "developer" : "Valve Software",
+        "platform" : [
+                "PC",
+                "Xbox"
+        ],
+        "releaseDate" : {
+                "month" : "oct",
+                "day" : 10,
+                "year" : 2007
+        },
+        "rating" : {
+                "metascore" : 90,
+                "userScore" : 9.2
+        }
+}
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4f"),
+        "title" : "Mass Effect",
+        "genre" : [
+                "rpg",
+                "Shooter",
+                "Sci-Fi"
+        ],
+        "developer" : "Bioware",
+        "platform" : [
+                "PC",
+                "Xbox",
+                "PS4",
+                "PS5"
+        ],
+        "releaseDate" : {
+                "month" : "may",
+                "day" : 28,
+                "year" : 2008
+        },
+        "rating" : {
+                "metascore" : 89,
+                "userScore" : 8.6
+        }
+}
+
+-----------------------------------------------------------------------
+
+3. Вивести всі ігри декількох визначених жанрів
+> db.games.find({$and: [{genre:"rpg"}, {genre:"Sci-Fi"}]}).pretty()
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4f"),
+        "title" : "Mass Effect",
+        "genre" : [
+                "rpg",
+                "Shooter",
+                "Sci-Fi"
+        ],
+        "developer" : "Bioware",
+        "platform" : [
+                "PC",
+                "Xbox",
+                "PS4",
+                "PS5"
+        ],
+        "releaseDate" : {
+                "month" : "may",
+                "day" : 28,
+                "year" : 2008
+        },
+        "rating" : {
+                "metascore" : 89,
+                "userScore" : 8.6
+        }
+}
+
+-----------------------------------------------------------------------
+
+4. Самостійно скласти запити для виведення інформації із масивів
+> db.games.find({platform: {$all: ["PC", "PS3"]}}).pretty()
+
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4a"),
+        "title" : "The Witcher 3",
+        "genre" : [
+                "rpg",
+                "fantasy"
+        ],
+        "developer" : "CD Projekt Red",
+        "platform" : [
+                "PC",
+                "PS4",
+                "PS5",
+                "Xbox"
+        ],
+        "releaseDate" : {
+                "day" : 19,
+                "month" : "may",
+                "year" : 2015
+        },
+        "rating" : {
+                "metascore" : 92,
+                "userScore" : 9.2
+        }
+}
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4b"),
+        "title" : "Dark Souls Remastered ",
+        "genre" : [
+                "rpg",
+                "souls-like",
+                "fantasy"
+        ],
+        "developer" : "From Software",
+        "platform" : [
+                "PC",
+                "PS4",
+                "PS5",
+                "Xbox"
+        ],
+        "releaseDate" : {
+                "month" : "may",
+                "day" : 25,
+                "year" : 2018
+        },
+        "rating" : {
+                "metascore" : 84,
+                "userScore" : 8
+        }
+}
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4d"),
+        "title" : "Terraria",
+        "genre" : [
+                "sandbox",
+                "platformer"
+        ],
+        "developer" : "Re-Logic",
+        "platform" : [
+                "PC",
+                "Xbox",
+                "PS4",
+                "PS5"
+        ],
+        "releaseDate" : {
+                "month" : "may",
+                "day" : 16,
+                "year" : 2011
+        },
+        "rating" : {
+                "metascore" : 83,
+                "userScore" : 8.7
+        }
+}
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4f"),
+        "title" : "Mass Effect",
+        "genre" : [
+                "rpg",
+                "Shooter",
+                "Sci-Fi"
+        ],
+        "developer" : "Bioware",
+        "platform" : [
+                "PC",
+                "Xbox",
+                "PS4",
+                "PS5"
+        ],
+        "releaseDate" : {
+                "month" : "may",
+                "day" : 28,
+                "year" : 2008
+        },
+        "rating" : {
+                "metascore" : 89,
+                "userScore" : 8.6
+        }
+}
+
+-----------------------------------------------------------------------
+
+> db.games.find({platform: {$size: 3}}).pretty()
+
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4c"),
+        "title" : "Bloodborne",
+        "genre" : [
+                "rpg",
+                "souls-like",
+                "fantasy"
+        ],
+        "developer" : "From Software",
+        "platform" : [
+                "PS4",
+                "PS5"
+        ],
+        "releaseDate" : {
+                "month" : "mar",
+                "day" : 25,
+                "year" : 2015
+        },
+        "rating" : {
+                "metascore" : 92,
+                "userScore" : 8.9
+        }
+}
+{
+        "_id" : ObjectId("6230e0aefbbe665129496a4e"),
+        "title" : "Portal",
+        "genre" : [
+                "Shooter",
+                "Arcade",
+                "Sci-Fi"
+        ],
+        "developer" : "Valve Software",
+        "platform" : [
+                "PC",
+                "Xbox"
+        ],
+        "releaseDate" : {
+                "month" : "oct",
+                "day" : 10,
+                "year" : 2007
+        },
+        "rating" : {
+                "metascore" : 90,
+                "userScore" : 9.2
+        }
+}
+
